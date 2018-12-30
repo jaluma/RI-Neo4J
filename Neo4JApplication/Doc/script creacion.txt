@@ -1,0 +1,75 @@
+CREATE (luis:Concursante {nombre:'Luis',apellido:'Mas'})
+CREATE (rodrigo:Concursante {nombre:'Rodrigo'})
+CREATE (alfonso:Concursante {nombre:'Alfonso'})
+CREATE (africa:Concursante {nombre:'Africa', apellido:'Adalia', edad:23})
+CREATE (joan:Concursante {nombre:'Joan', apellido:'Garrido', edad:23})
+CREATE (dave:Concursante {nombre:'Dave', apellido:'Zulueta', edad:20})
+CREATE (damion:Concursante {nombre:'Damion', apellido:'Frost', pais:'Alemania'})
+CREATE (noelia:Concursante {nombre:'Noelia'})
+CREATE (carlos:Concursante {nombre:'Carlos', nombre_artistico:'Carlos Right'})
+CREATE (marilia:Concursante {nombre:'Marilia', edad:18})
+CREATE (maria:Concursante {nombre:'Maria', apellido:'Villar', edad:27})
+CREATE (marta:Concursante {nombre:'Marta', nombre_artistico:'Marta Sango', edad:18})
+CREATE (miki:Concursante {nombre:'Miki', apellido:'Nunyez'})
+CREATE (julia:Concursante {nombre:'Julia', apellido:'Medina'})
+CREATE (sabela:Concursante {nombre:'Sabela', apellido:'Ramil', edad:25})
+CREATE (natalia:Concursante {nombre:'Natalia', apellido:'Lacunza', nombre_artistico:'Eilan Bay'})
+CREATE (alba:Concursante {nombre:'Alba', nombre_artistico:'Alba Reche'})
+CREATE (famous:Concursante {nombre:'Famous', apellido:'Oberogo', edad:19})
+CREATE(Gala0:Gala {numero:0, nombre:'Gala 0', fecha:'2018-09-19'})
+CREATE(Gala1:Gala {numero:1, nombre:'Gala 1', fecha:'2018-09-26'})
+CREATE(Gala2:Gala {numero:2, nombre:'Gala 2', fecha:'2018-10-03'})
+CREATE(Gala3:Gala {numero:3, nombre:'Gala 3', fecha:'2018-10-10'})
+CREATE(Gala4:Gala {numero:4, nombre:'Gala 4', fecha:'2018-10-17'})
+CREATE(Gala5:Gala {numero:5, nombre:'Gala 5', fecha:'2018-10-24'})
+CREATE(Gala6:Gala {numero:6, nombre:'Gala 6', fecha:'2018-10-31'})
+CREATE(Gala7:Gala {numero:7, nombre:'Gala 7', fecha:'2018-11-07'})
+CREATE(Gala8:Gala {numero:8, nombre:'Gala 8', fecha:'2018-11-14'})
+CREATE(Gala9:Gala {numero:9, nombre:'Gala 9', fecha:'2018-11-21'})
+CREATE(Gala10:Gala {numero:10, nombre:'Gala 10', fecha:'2018-11-28'})
+CREATE(Gala11:Gala {numero:11, nombre:'Gala 11', fecha:'2018-12-05'})
+CREATE(Gala12:Gala {numero:12, nombre:'Gala 12', fecha:'2018-12-12'})
+CREATE(Gala13:Gala {numero:13, nombre:'Gala final', fecha:'2018-12-19'})
+CREATE
+	(julia)-[:CANTA_CON {gala:1}]->(joan),
+	(carlos)-[:CANTA_CON {gala:1}]->(miki),
+	(alfonso)-[:CANTA_CON {gala:1}]->(sabela),
+	(damion)-[:CANTA_CON {gala:1}]->(africa),
+	(maria)-[:CANTA_CON {gala:1}]->(marta),
+	(marilia)-[:CANTA_CON {gala:1}]->(dave),
+	(natalia)-[:CANTA_CON {gala:1}]->(famous),
+	(alba)-[:CANTA_CON {gala:1}]->(noelia),
+	(africa)-[:CANTA_CON {gala:2}]->(maria),
+	(famous)-[:CANTA_CON {gala:2}]->(damion),
+	(dave)-[:CANTA_CON {gala:2}]->(noelia),
+	(carlos)-[:CANTA_CON {gala:2}]->(julia),
+	(alba)-[:CANTA_CON {gala:2}]->(miki),
+	(marilia)-[:CANTA_CON {gala:2}]->(joan),
+	(natalia)-[:CANTA_CON {gala:2}]->(marta),
+	(carlos)-[:CANTA_CON {gala:3}]->(maria),
+	(famous)-[:CANTA_CON {gala:3}]->(noelia),
+	(joan)-[:CANTA_CON {gala:3}]->(miki),
+	(sabela)-[:CANTA_CON {gala:3}]->(marilia),
+	(marta)-[:CANTA_CON {gala:3}]->(alba),
+	(natalia)-[:CANTA_CON {gala:3}]->(damion),
+	(luis)-[:EXPULSADO]->(Gala0),
+	(rodrigo)-[:EXPULSADO]->(Gala0),
+	(alfonso)-[:EXPULSADO]->(Gala1),
+	(africa)-[:EXPULSADO]->(Gala2),
+	(joan)-[:EXPULSADO]->(Gala3),
+	(dave)-[:EXPULSADO]->(Gala4),
+	(damion)-[:EXPULSADO]->(Gala6),
+	(noelia)-[:EXPULSADO]->(Gala7),
+	(carlos)-[:EXPULSADO]->(Gala8),
+	(marilia)-[:EXPULSADO]->(Gala9),
+	(maria)-[:EXPULSADO]->(Gala10),
+	(marta)-[:EXPULSADO]->(Gala11),
+	(natalia)-[:FINALISTA]->(Gala11),
+	(famous)-[:FINALISTA]->(Gala11),
+	(miki)-[:EXPULSADO]->(Gala12),
+	(alba)-[:FINALISTA]->(Gala12),
+	(sabela)-[:FINALISTA]->(Gala12),
+	(julia)-[:FINALISTA]->(Gala12),
+	(julia)-[:EXPULSADO]->(Gala13),
+	(sabela)-[:EXPULSADO]->(Gala13),
+	(famous)-[:GANADOR]->(Gala13)
