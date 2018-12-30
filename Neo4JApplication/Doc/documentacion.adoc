@@ -4,9 +4,9 @@
 
 == DOMINIO DE APLICACIÓN
 
-La base de datos de grafo desarrollada representa la última edición del concurso-reality Operación Triunfo. 
-La edición de 2018 ha contado con 18 concursantes, dos de ellos expulsados en la gala 0, y con un expulsado semanal desde la gala 1 hasta la 13, la gala final.
-Durante las primeras galas de la edición, los concursantes cantaban en dúos, y según avanzaba el programa, pasaron a cantar en solitario.
+La base de datos de grafo desarrollada representa la última edición del concurso-reality Operación Triunfo. +
+La edición de 2018 ha contado con 18 concursantes, dos de ellos expulsados en la gala 0, y con un expulsado semanal desde la gala 1 hasta la 13, la gala final. +
+Durante las primeras galas de la edición, los concursantes cantaban en dúos, y según avanzaba el programa, pasaron a cantar en solitario. +
 La final se disputa entre cinco concursantes, de los cuales dos son expulsados a mitad de gala, y el ganador se encuentra entre los tres restantes.
 
 image::https://i.imgur.com/hgIQ4QA.jpg[width=600]
@@ -106,7 +106,7 @@ CREATE
 
 == Consultas elementales
 
-* Edad del concursante más veterano
+=== Edad del concursante más veterano
 
 [source,cypher]
 ----
@@ -118,7 +118,7 @@ REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 //table
 
-* Concursantes alemanes con toda la información de cada uno
+=== Concursantes alemanes con toda la información de cada uno
 
 [source,cypher]
 ----
@@ -131,7 +131,7 @@ REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 == Consultas intermedias
 
-* Fecha de la gala en la que fue expulsado el concursante Dave Zulueta
+=== Fecha de la gala en la que fue expulsado el concursante Dave Zulueta
 
 [source,cypher]
 ----
@@ -142,7 +142,7 @@ RETURN g.fecha
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
-* Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones
+=== Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones 
 Primero sacamos el máximo de colaboraciones de los concursantes:
 [source,cypher]
 ----
@@ -165,7 +165,7 @@ REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 == Consultas avanzadas
 
-* Concursante que haya cantado con al menos dos concursantes que han sido expulsados después de la gala 8
+=== Concursante que haya cantado con al menos dos concursantes que han sido expulsados después de la gala 8
 
 [source,cypher]
 ----
@@ -178,7 +178,7 @@ RETURN DISTINCT c
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
-* REPLACE ME : OBJETIVO
+=== REPLACE ME : OBJETIVO
 
 [source,cypher]
 ----
