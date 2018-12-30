@@ -143,12 +143,18 @@ RETURN g.fecha
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 * Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones
-
+Primero sacamos el máximo de colaboraciones de los concursantes:
 [source,cypher]
 ----
 MATCH (c:Concursante)-[:CANTA_CON]-(colaboradores)
 WITH c.nombre AS nombre, count(c) AS colaboraciones
-WITH nombre, colaboraciones, MAX(colaboraciones) AS maximo
+RETURN MAX(colaboraciones) AS maximo
+----
+Una vez sacado el máximo, lo guardamos para pasarlo a la siguiente consulta, donde maximo sería sustituido por el valor.
+[source,cypher]
+----
+MATCH (c:Concursante)-[:CANTA_CON]-(colaboradores)
+WITH c.nombre AS nombre, count(c) AS colaboraciones
 WHERE colaboraciones = maximo
 RETURN nombre
 ----
