@@ -4,9 +4,9 @@
 
 == DOMINIO DE APLICACIÓN
 
-La base de datos de grafo desarrollada representa la última edición del concurso-reality Operación Triunfo. 
-La edición de 2018 ha contado con 18 concursantes, dos de ellos expulsados en la gala 0, y con un expulsado semanal desde la gala 1 hasta la 13, la gala final.
-Durante las primeras galas de la edición, los concursantes cantaban en dúos, y según avanzaba el programa, pasaron a cantar en solitario.
+La base de datos de grafo desarrollada representa la última edición del concurso-reality Operación Triunfo. +
+La edición de 2018 ha contado con 18 concursantes, dos de ellos expulsados en la gala 0, y con un expulsado semanal desde la gala 1 hasta la 13, la gala final. +
+Durante las primeras galas de la edición, los concursantes cantaban en dúos, y según avanzaba el programa, pasaron a cantar en solitario. +
 La final se disputa entre cinco concursantes, de los cuales dos son expulsados a mitad de gala, y el ganador se encuentra entre los tres restantes.
 
 image::https://i.imgur.com/hgIQ4QA.jpg[width=600]
@@ -106,42 +106,57 @@ CREATE
 
 == Consultas elementales
 
-* REPLACE ME : OBJETIVO
+=== Edad del concursante más veterano
 
 [source,cypher]
 ----
-REPLACE ME : CONSULTA
+MATCH (c:Concursante)
+RETURN MAX(c.edad)
 ----
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 //table
 
-* REPLACE ME : OBJETIVO
+=== Concursantes alemanes con toda la información de cada uno
 
 [source,cypher]
 ----
-REPLACE ME : CONSULTA
+MATCH (c:Concursante)
+WHERE c.pais='Alemania'
+RETURN c
 ----
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 == Consultas intermedias
 
-* REPLACE ME : OBJETIVO
+=== Fecha de la gala en la que fue expulsado el concursante Dave Zulueta
 
 [source,cypher]
 ----
-REPLACE ME : CONSULTA
+MATCH(c:Concursante)-[:EXPULSADO]-(g:Gala)
+WHERE c.nombre = 'Dave' AND c.apellido = 'Zulueta'
+RETURN g.fecha
 ----
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
-* REPLACE ME : OBJETIVO
-
+=== Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones 
+Primero sacamos el máximo de colaboraciones de los concursantes:
 [source,cypher]
 ----
-REPLACE ME : CONSULTA
+MATCH (c:Concursante)-[:CANTA_CON]-(colaboradores)
+WITH c.nombre AS nombre, count(c) AS colaboraciones
+RETURN MAX(colaboraciones) AS maximo
+----
+Una vez sacado el máximo, lo guardamos para pasarlo a la siguiente consulta, donde maximo sería sustituido por el valor.
+[source,cypher]
+----
+MATCH (c:Concursante)-[:CANTA_CON]-(colaboradores)
+WITH c.nombre AS nombre, count(c) AS colaboraciones
+WHERE colaboraciones = maximo
+RETURN nombre
 ----
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
@@ -150,16 +165,20 @@ REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
 == Consultas avanzadas
 
-* REPLACE ME : OBJETIVO
+=== Concursante que haya cantado con al menos dos concursantes que han sido expulsados después de la gala 8
 
 [source,cypher]
 ----
-REPLACE ME : CONSULTA
+MATCH (colaborador1:Concursante)-[:EXPULSADO]-(g1:Gala), (colaborador2:Concursante)-[:EXPULSADO]-(g2:Gala),
+(colaborador1)-[:CANTA_CON]-(c:Concursante),
+(colaborador2)-[:CANTA_CON]-(c)
+WHERE g1.numero > 8 AND g2.numero > 8 AND colaborador1 <> colaborador2
+RETURN DISTINCT c
 ----
 
 REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
 
-* REPLACE ME : OBJETIVO
+=== REPLACE ME : OBJETIVO
 
 [source,cypher]
 ----
