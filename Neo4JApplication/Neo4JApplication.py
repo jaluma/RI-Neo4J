@@ -7,6 +7,7 @@ import os
 
 import util
 import DB_Manager
+import Queries
 
 def main():
     install_dependencies();
@@ -99,7 +100,8 @@ def menu_consultas_avanzadas():
 
 def consulta_elemental_1():
     print_info_consultas("Edad del concursante mayor")
-    pass
+
+    print(DB_Manager.query(Queries.get_concursante_con_mayor_edad))
 
 def consulta_elemental_2():
     print_info_consultas("Concursantes alemanes con toda la informacion de cada uno")

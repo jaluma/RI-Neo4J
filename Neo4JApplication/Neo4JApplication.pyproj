@@ -26,6 +26,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Neo4JApplication.py" />
+    <Compile Include="Queries.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="serializer.py">
       <SubType>Code</SubType>
     </Compile>
