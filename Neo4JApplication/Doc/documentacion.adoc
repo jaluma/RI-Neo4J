@@ -184,6 +184,6 @@ WHERE res IN posibles AND  NOT res IN imposibles
 RETURN res
 ----
 image::https://i.imgur.com/rnNdMBO.jpg[]
-image::https://i.imgur.com/AC5Mx45.png[]
- +
+image::https://i.imgur.com/AC5Mx45.png[] +
+
 Creado por Javier Martínez Álvarez, Gema Rico Pozas, Lino Menéndez de Luarca Trabanco, Mª Isabel Fernández Pérez
