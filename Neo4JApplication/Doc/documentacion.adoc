@@ -113,10 +113,8 @@ CREATE
 MATCH (c:Concursante)
 RETURN MAX(c.edad)
 ----
-
-REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
-
-//table
+"MAX(c.edad)": +
+27
 
 === Concursantes alemanes con toda la información de cada uno
 
@@ -126,8 +124,8 @@ MATCH (c:Concursante)
 WHERE c.pais='Alemania'
 RETURN c
 ----
-
-REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
+"c": +
+{"nombre":"Damion","pais":"Alemania","apellido":"Frost"}
 
 == Consultas intermedias
 
@@ -139,8 +137,8 @@ MATCH(c:Concursante)-[:EXPULSADO]-(g:Gala)
 WHERE c.nombre = 'Dave' AND c.apellido = 'Zulueta'
 RETURN g.fecha
 ----
-
-REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
+"g.fecha": +
+"2018-10-17"
 
 === Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones 
 Primero sacamos el máximo de colaboraciones de los concursantes:
@@ -158,10 +156,18 @@ WITH c.nombre AS nombre, count(c) AS colaboraciones
 WHERE colaboraciones = maximo
 RETURN nombre
 ----
-
-REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
-
-//graph_result
+"nombre": +
+"Joan" +
+"Damion" +
+"Noelia" +
+"Carlos" +
+"Marilia" +
+"Maria" +
+"Marta" +
+"Miki" +
+"Natalia" +
+"Alba" +
+"Famous"
 
 == Consultas avanzadas
 
@@ -175,8 +181,10 @@ MATCH (colaborador1:Concursante)-[:EXPULSADO]-(g1:Gala), (colaborador2:Concursan
 WHERE g1.numero > 8 AND g2.numero > 8 AND colaborador1 <> colaborador2
 RETURN DISTINCT c
 ----
-
-REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
+"c": +
+{"nombre":"Joan","edad":23,"apellido":"Garrido"} +
+{"nombre_artistico":"Carlos Right","nombre":"Carlos"} +
+{"nombre_artistico":"Alba Reche","nombre":"Alba"}
 
 === REPLACE ME : OBJETIVO
 
