@@ -113,8 +113,7 @@ CREATE
 MATCH (c:Concursante)
 RETURN MAX(c.edad)
 ----
-"MAX(c.edad)": +
-27
+image::https://i.imgur.com/arEncVe.jpg[]
 
 === Concursantes alemanes con toda la información de cada uno
 
@@ -124,8 +123,7 @@ MATCH (c:Concursante)
 WHERE c.pais='Alemania'
 RETURN c
 ----
-"c": +
-{"nombre":"Damion","pais":"Alemania","apellido":"Frost"}
+image::https://i.imgur.com/tWGa5Mq.jpg[]
 
 == Consultas intermedias
 
@@ -137,8 +135,7 @@ MATCH(c:Concursante)-[:EXPULSADO]-(g:Gala)
 WHERE c.nombre = 'Dave' AND c.apellido = 'Zulueta'
 RETURN g.fecha
 ----
-"g.fecha": +
-"2018-10-17"
+image::https://i.imgur.com/ICq1ZVU.jpg[]
 
 === Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones 
 Primero sacamos el máximo de colaboraciones de los concursantes:
@@ -156,18 +153,7 @@ WITH c.nombre AS nombre, count(c) AS colaboraciones
 WHERE colaboraciones = maximo
 RETURN nombre
 ----
-"nombre": +
-"Joan" +
-"Damion" +
-"Noelia" +
-"Carlos" +
-"Marilia" +
-"Maria" +
-"Marta" +
-"Miki" +
-"Natalia" +
-"Alba" +
-"Famous"
+image::https://i.imgur.com/ru3DpiU.jpg[]
 
 == Consultas avanzadas
 
@@ -181,18 +167,23 @@ MATCH (colaborador1:Concursante)-[:EXPULSADO]-(g1:Gala), (colaborador2:Concursan
 WHERE g1.numero > 8 AND g2.numero > 8 AND colaborador1 <> colaborador2
 RETURN DISTINCT c
 ----
-"c": +
-{"nombre":"Joan","edad":23,"apellido":"Garrido"} +
-{"nombre_artistico":"Carlos Right","nombre":"Carlos"} +
-{"nombre_artistico":"Alba Reche","nombre":"Alba"}
+image::https://i.imgur.com/KOFdYUX.jpg[]
 
-=== REPLACE ME : OBJETIVO
+=== Concursantes que hayan cantado con el ganador de la gala final directamente o indirectamente (con otro concursante que haya cantado con él directamente) y que al mismo tiempo nunca han cantado directamente con un expulsado en la gala final.
 
 [source,cypher]
 ----
-REPLACE ME : CONSULTA
+MATCH (ganador:Concursante)-[:GANADOR]-(:Gala{nombre:'Gala final'}),
+(expulsado:Concursante)-[:EXPULSADO]-(:Gala{nombre:'Gala final'}),
+(ganador)-[:CANTA_CON*1..2]-(posible:Concursante),
+(expulsado)-[:CANTA_CON]-(imposible:Concursante)
+WHERE posible <> ganador
+WITH collect(distinct posible) as posibles, collect(distinct imposible) as imposibles
+MATCH (res:Concursante)
+WHERE res IN posibles AND  NOT res IN imposibles
+RETURN res
 ----
-
-REPLACE ME : RESULTADO (TEXTO Y/O GRAFO)
-
+image::https://i.imgur.com/rnNdMBO.jpg[]
+image::https://i.imgur.com/AC5Mx45.png[]
+ +
 Creado por Javier Martínez Álvarez, Gema Rico Pozas, Lino Menéndez de Luarca Trabanco, Mª Isabel Fernández Pérez
