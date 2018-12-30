@@ -1,4 +1,4 @@
-
+# serializadores de los elementos
 
 def serialize_concursante(concursante):
     return {

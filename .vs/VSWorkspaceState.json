@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Neo4JApplication"
   ],
+  "SelectedNode": "\\Neo4JApplication\\util.py",
   "PreviewInSolutionExplorer": false
 }

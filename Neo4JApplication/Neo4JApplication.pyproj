@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>427aa298-b2e4-4715-b1f0-6450741cb247</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Neo4JApplication.py</StartupFile>
+    <StartupFile>application.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,11 +22,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DB_Manager.py">
+    <Compile Include="db.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Neo4JApplication.py" />
-    <Compile Include="Queries.py">
+    <Compile Include="application.py" />
+    <Compile Include="queries.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="serializer.py">

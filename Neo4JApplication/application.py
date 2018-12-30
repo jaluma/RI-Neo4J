@@ -6,18 +6,11 @@ import sys
 import os
 
 import util
-import DB_Manager
-import Queries
+import db
+import queries
 
 def main():
-    install_dependencies();
-
     menu_principal()
-
-def install_dependencies():
-    util.install_and_import("flask")
-
-    util.install_and_import("neo4j-driver", "neo4j.v1")
 
 def menu_principal():
     while True:
@@ -101,11 +94,12 @@ def menu_consultas_avanzadas():
 def consulta_elemental_1():
     print_info_consultas("Edad del concursante mayor")
 
-    print(DB_Manager.query(Queries.get_concursante_con_mayor_edad))
+    print_results(db.db_manager().query(queries.get_concursante_con_mayor_edad))
 
 def consulta_elemental_2():
     print_info_consultas("Concursantes alemanes con toda la informacion de cada uno")
-    pass
+    
+    print_results(db.db_manager().query(queries.get_concursantes_alemanes))
 
 def consulta_intermedias_1():
     print_info_consultas("Fecha de la gala en la que fue expulsado el concursante Dave Zulueta")
@@ -127,6 +121,11 @@ def print_info_consultas(str):
     print("--------------------")
     print(str)
     print("--------------------")
+    print()
+
+def print_results(str):
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(str)
     print()
 
 # script

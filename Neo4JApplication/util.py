@@ -2,7 +2,6 @@ import subprocess
 import importlib
 import sys
 
-import SPARQLWrapper
 import json
 
 def install_and_import(package, module_name=""):
@@ -14,6 +13,7 @@ def install_and_import(package, module_name=""):
     except ImportError:
         print("Instalando paquetes necesarios...")
         subprocess.call([sys.executable, "-m", "pip", "install", package], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        __import__(module_name)
         module = importlib.import_module(module_name)
 
         globals().update(
