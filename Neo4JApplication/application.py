@@ -112,12 +112,14 @@ def consulta_intermedias_2():
     print_results(db.db_manager().query(queries.get_concursantes_mas_colaboraciones))
 
 def consulta_avanzadas_1():
-    print_info_consultas("---")
-    pass
+    print_info_consultas("Concursante que haya cantado con al menos dos concursantes que han sido expulsados despues de la gala 8")
+    
+    print_results(db.db_manager().query(queries.get_concursante_canta_expulsados))
 
 def consulta_avanzadas_2():
-    print_info_consultas("---")
-    pass
+    print_info_consultas("Concursantes que hayan cantado con el ganador de la gala final directamente o indirectamente (con otro concursante que haya cantado con el directamente) y que al mismo tiempo nunca han cantado directamente con un expulsado en la gala final.")
+    
+    print_results(db.db_manager().query(queries.get_concursantes_relacionados_ganador))
 
 def print_info_consultas(str):
     print("--------------------")

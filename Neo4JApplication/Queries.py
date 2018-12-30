@@ -44,3 +44,31 @@ def get_concursantes_mas_colaboraciones(db):
     [array.append(record["nombre"]) for record in results]
 
     return array   
+
+def get_concursante_canta_expulsados(db):
+    results = db.run("MATCH (colaborador1:Concursante)-[:EXPULSADO]-(g1:Gala), (colaborador2:Concursante)-[:EXPULSADO]-(g2:Gala), "
+                     "(colaborador1)-[:CANTA_CON]-(c:Concursante), "
+                     "(colaborador2)-[:CANTA_CON]-(c) "
+                     "WHERE g1.numero > 8 AND g2.numero > 8 AND colaborador1 <> colaborador2 "
+                     "RETURN DISTINCT c")
+
+    array = []
+    [array.append(serializer.serialize_concursante(record["c"])) for record in results]
+
+    return array
+
+def get_concursantes_relacionados_ganador(db):
+    results = db.run("MATCH (ganador:Concursante)-[:GANADOR]-(:Gala{nombre:'Gala final'}), "
+                     "(expulsado:Concursante)-[:EXPULSADO]-(:Gala{nombre:'Gala final'}), "
+                     "(ganador)-[:CANTA_CON*1..2]-(posible:Concursante), "
+                     "(expulsado)-[:CANTA_CON]-(imposible:Concursante) "
+                     "WHERE posible <> ganador "
+                     "WITH collect(distinct posible) as posibles, collect(distinct imposible) as imposibles "
+                     "MATCH (res:Concursante) "
+                     "WHERE res IN posibles AND  NOT res IN imposibles "
+                     "RETURN res ")
+
+    array = []
+    [array.append(serializer.serialize_concursante(record["res"])) for record in results]
+
+    return array
