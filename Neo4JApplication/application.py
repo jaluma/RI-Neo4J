@@ -103,11 +103,13 @@ def consulta_elemental_2():
 
 def consulta_intermedias_1():
     print_info_consultas("Fecha de la gala en la que fue expulsado el concursante Dave Zulueta")
-    pass
+    
+    print_results(db.db_manager().query(queries.get_fecha_expulsion_dave))
 
 def consulta_intermedias_2():
     print_info_consultas("Concursantes que colaboran con otros participantes tantas veces como el concursante con mas colaboraciones")
-    pass
+    
+    print_results(db.db_manager().query(queries.get_concursantes_mas_colaboraciones))
 
 def consulta_avanzadas_1():
     print_info_consultas("---")
