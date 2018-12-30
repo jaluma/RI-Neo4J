@@ -1,0 +1,29 @@
+Edad del concursante más veterano
+MATCH (c:Concursante)
+RETURN MAX(c.edad)
+
+Concursantes alemanes con toda la información de cada uno
+MATCH (c:Concursante)
+WHERE c.pais='Alemania'
+RETURN c
+
+Fecha de la gala en la que fue expulsado el concursante Dave Zulueta
+MATCH(c:Concursante)-[:EXPULSADO]-(g:Gala)
+WHERE c.nombre = 'Dave' AND c.apellido = 'Zulueta'
+RETURN g.fecha
+
+Concursantes que colaboran con otros participantes tantas veces como el concursante con más colaboraciones
+MATCH (c:Concursante)-[:CANTA_CON]-(colaboradores)
+WITH c.nombre AS nombre, count(c) AS colaboraciones
+RETURN MAX(colaboraciones) AS maximo
+MATCH (c:Concursante)-[:CANTA_CON]-(colaboradores)
+WITH c.nombre AS nombre, count(c) AS colaboraciones
+WHERE colaboraciones = maximo
+RETURN nombre
+
+Concursante que haya cantado con al menos dos concursantes que han sido expulsados después de la gala 8
+MATCH (colaborador1:Concursante)-[:EXPULSADO]-(g1:Gala), (colaborador2:Concursante)-[:EXPULSADO]-(g2:Gala),
+(colaborador1)-[:CANTA_CON]-(c:Concursante),
+(colaborador2)-[:CANTA_CON]-(c)
+WHERE g1.numero > 8 AND g2.numero > 8 AND colaborador1 <> colaborador2
+RETURN DISTINCT c
