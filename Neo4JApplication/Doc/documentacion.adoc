@@ -186,4 +186,4 @@ RETURN res
 image::https://i.imgur.com/rnNdMBO.jpg[]
 image::https://i.imgur.com/AC5Mx45.png[]
 
-Creado por Javier Martínez Álvarez, Gema Rico Pozas, Lino Menéndez de Luarca Trabanco, Mª Isabel Fernández Pérez
+Creado por Javier Martínez Álvarez (UO258092), Gema Rico Pozas (UO238096), Lino Menéndez de Luarca Trabanco (UO216936), Mª Isabel Fernández Pérez (UO257829)
