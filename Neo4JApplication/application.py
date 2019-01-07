@@ -37,8 +37,8 @@ def menu_principal():
 def menu_consultas_elementales():
     while True:
         print("--- Consultas elementales ---")
-        print(" 1 - Consultas 1")
-        print(" 2 - Consultas 2")
+        print(" 1 - Consulta 1")
+        print(" 2 - Consulta 2")
         print(" 3 - Volver")
         print("Escoja una opcion (1-3):")
 
@@ -56,8 +56,8 @@ def menu_consultas_elementales():
 def menu_consultas_intermedias():
     while True:
         print("--- Consultas intermedias ---")
-        print(" 1 - Consultas 1")
-        print(" 2 - Consultas 2")
+        print(" 1 - Consulta 1")
+        print(" 2 - Consulta 2")
         print(" 3 - Volver")
         print("Escoja una opcion (1-3):")
 
@@ -75,8 +75,8 @@ def menu_consultas_intermedias():
 def menu_consultas_avanzadas():
     while True:
         print("--- Consultas avanzadas ---")
-        print(" 1 - Consultas 1")
-        print(" 2 - Consultas 2")
+        print(" 1 - Consulta 1")
+        print(" 2 - Consulta 2")
         print(" 3 - Volver")
         print("Escoja una opcion (1-3):")
 
